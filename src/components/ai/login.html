@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+        }
+        
+        .signup-form,
+        .forgot-password-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+            </div>
+            <button class="btn" type="submit">Login</button>
+            <p>Don't have an account? <a href="#" id="signup-link">Sign Up</a></p>
+            <p><a href="#" id="forgot-password-link">Forgot Password?</a></p>
+        </form>
+        
+        <form id="signup-form" class="signup-form">
+            <div class="form-group">
+                <label for="signup-username">Username</label>
+                <input type="text" id="signup-username" name="signup-username" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" name="signup-password" placeholder="Enter your password">
+            </div>
+            <button class="btn" type="submit">Sign Up</button>
+            <p>Already have an account? <a href="#" id="login-link">Login</a></p>
+        </form>
+
+        <form id="forgot-password-form" class="forgot-password-form">
+            <div class="form-group">
+                <label for="forgot-password-email">Email</label>
+                <input type="email" id="forgot-password-email" name="forgot-password-email" placeholder="Enter your email">
+            </div>
+            <button class="btn" type="submit">Reset Password</button>
+            <p>Remembered your password? <a href="#" id="login-link">Login</a></p>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const forgotPasswordForm = document.getElementById('forgot-password-form');
+        const signupLink = document.getElementById('signup-link');
+        const loginLink = document.getElementById('login-link');
+        const forgotPasswordLink = document.getElementById('forgot-password-link');
+
+        signupLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginForm.style.display = 'none';
+            signupForm.style.display = 'block';
+            forgotPasswordForm.style.display = 'none';
+        });
+
+        loginLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginForm.style.display = 'block';
+            signupForm.style.display = 'none';
+            forgotPasswordForm.style.display = 'none';
+        });
+
+        forgotPasswordLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginForm.style.display = 'none';
+            signupForm.style.display = 'none';
+            forgotPasswordForm.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
