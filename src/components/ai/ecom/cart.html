@@ -1,0 +1,113 @@
+<!-- FILEPATH: /Users/victoriapetlitskaya/Desktop/viaje/learning/landing-online-learning/src/components/ai/ecom/cart.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <style>
+        .product {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .product img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+        }
+        .product input {
+            width: 50px;
+        }
+        .summary {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+        .summary label {
+            display: inline-block;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cart</h1>
+
+    <div class="product">
+        <img src="product1.jpg" alt="Product 1">
+        <h3>Product 1</h3>
+        <input type="number" value="1" min="1">
+        <span class="price">$10</span>
+    </div>
+
+    <div class="product">
+        <img src="product2.jpg" alt="Product 2">
+        <h3>Product 2</h3>
+        <input type="number" value="1" min="1">
+        <span class="price">$15</span>
+    </div>
+
+    <div class="product">
+        <img src="product3.jpg" alt="Product 3">
+        <h3>Product 3</h3>
+        <input type="number" value="1" min="1">
+        <span class="price">$20</span>
+    </div>
+
+    <div class="product">
+        <img src="product4.jpg" alt="Product 4">
+        <h3>Product 4</h3>
+        <input type="number" value="1" min="1">
+        <span class="price">$25</span>
+    </div>
+
+    <div class="product">
+        <img src="product5.jpg" alt="Product 5">
+        <h3>Product 5</h3>
+        <input type="number" value="1" min="1">
+        <span class="price">$30</span>
+    </div>
+
+    <div class="summary">
+        <label>Subtotal:</label>
+        <span class="subtotal">$0</span>
+    </div>
+
+    <div class="summary">
+        <label>Discount:</label>
+        <input type="number" value="0" min="0">
+    </div>
+
+    <div class="summary">
+        <label>Total:</label>
+        <span class="total">$0</span>
+    </div>
+
+    <script>
+        // Add functionality to change the amount of products
+        const productInputs = document.querySelectorAll('.product input');
+        productInputs.forEach(input => {
+            input.addEventListener('change', () => {
+                const quantity = parseInt(input.value);
+                // Perform necessary actions when the quantity changes
+                updateSummary();
+            });
+        });
+
+        // Update the summary values
+        function updateSummary() {
+            const productElements = document.querySelectorAll('.product');
+            let subtotal = 0;
+            productElements.forEach(product => {
+                const price = parseInt(product.querySelector('.price').textContent.slice(1));
+                const quantity = parseInt(product.querySelector('input').value);
+                subtotal += price * quantity;
+            });
+            const discount = parseInt(document.querySelector('.summary input').value);
+            const total = subtotal - discount;
+
+            document.querySelector('.summary .subtotal').textContent = `$${subtotal}`;
+            document.querySelector('.summary .total').textContent = `$${total}`;
+        }
+    </script>
+</body>
+</html>

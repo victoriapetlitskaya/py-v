@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catalog</title>
+    <style>
+        /* Add your custom styles here */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .product h2 {
+            margin-top: 0;
+        }
+
+        .product p {
+            margin-bottom: 10px;
+        }
+
+        .product label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .add-to-cart {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pagination a {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Catalog</h1>
+
+    <div class="product-list">
+        <!-- Product 1 -->
+        <div class="product">
+            <h2>Product 1</h2>
+            <p>Price: $10</p>
+            <label for="product1-color">Color:</label>
+            <input type="radio" id="product1-color-red" name="product1-color" value="red">
+            <label for="product1-color-red">Red</label>
+            <input type="radio" id="product1-color-blue" name="product1-color" value="blue">
+            <label for="product1-color-blue">Blue</label>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product">
+            <h2>Product 2</h2>
+            <p>Price: $20</p>
+            <label for="product2-color">Color:</label>
+            <input type="radio" id="product2-color-red" name="product2-color" value="red">
+            <label for="product2-color-red">Red</label>
+            <input type="radio" id="product2-color-blue" name="product2-color" value="blue">
+            <label for="product2-color-blue">Blue</label>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Add more products here -->
+
+    </div>
+
+    <div class="pagination">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">7</a>
+        <a href="#">8</a>
+        <a href="#">9</a>
+        <a href="#">10</a>
+    </div>
+
+    <script>
+        // Add your JavaScript code here
+        const paginationLinks = document.querySelectorAll('.pagination a');
+        const productLists = document.querySelectorAll('.product-list');
+
+        paginationLinks.forEach((link, index) => {
+            link.addEventListener('click', () => {
+                // Remove active class from all pagination links
+                paginationLinks.forEach((link) => {
+                    link.classList.remove('active');
+                });
+
+                // Add active class to the clicked pagination link
+                link.classList.add('active');
+
+                // Hide all product lists
+                productLists.forEach((list) => {
+                    list.style.display = 'none';
+                });
+
+                // Show the corresponding product list based on the clicked pagination link
+                productLists[index].style.display = 'flex';
+            });
+        });
+    </script>
+</body>
+</html>
